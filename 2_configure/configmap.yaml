@@ -1,0 +1,30 @@
+apiVersion: v1
+  
+kind: ConfigMap
+  
+metadata:
+  
+  name: special-config
+  
+  namespace: cynic8s-ns
+  
+data:
+  
+  special.how: very-cs
+  
+---
+  
+apiVersion: v1
+  
+kind: ConfigMap
+  
+metadata:
+  
+  name: env-config
+  
+  namespace: cynic8s-ns
+  
+data:
+  
+  log_level: INFO-cs
+  

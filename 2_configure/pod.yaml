@@ -1,8 +1,41 @@
 apiVersion: v1
+  
 kind: Pod
+  
 metadata:
-  name: cynic8s-pod
+  
+  name: cs-pod
+  
 spec:
+  
   containers:
-  - name: cynic8s-httpd
-    image: httpd:2.4
+  
+    - name: cs-container1
+  
+      image: registry.k8s.io/busybox
+  
+      command: [ "/bin/sh", "-c", "env" ]
+  
+      env:
+  
+        - name: SPECIAL_LEVEL_KEY
+  
+          valueFrom:
+  
+            configMapKeyRef:
+  
+              name: special-config
+  
+              key: special.how
+  
+        - name: LOG_LEVEL
+  
+          valueFrom:
+  
+            configMapKeyRef:
+  
+              name: env-config
+  
+              key: log_level
+  
+  restartPolicy: Never
